@@ -46,6 +46,7 @@ class MessageControllerTest extends WebTestCase
         $this->client->submitForm('Save', [
             'message[objet]' => 'Testing',
             'message[contenu]' => 'Testing',
+            'message[user_id]' => 'Testing',
         ]);
 
         self::assertResponseRedirects('/message/');
@@ -59,6 +60,7 @@ class MessageControllerTest extends WebTestCase
         $fixture = new Message();
         $fixture->setObjet('My Title');
         $fixture->setContenu('My Title');
+        $fixture->setUser_id('My Title');
 
         $this->repository->save($fixture, true);
 
@@ -76,6 +78,7 @@ class MessageControllerTest extends WebTestCase
         $fixture = new Message();
         $fixture->setObjet('My Title');
         $fixture->setContenu('My Title');
+        $fixture->setUser_id('My Title');
 
         $this->repository->save($fixture, true);
 
@@ -84,6 +87,7 @@ class MessageControllerTest extends WebTestCase
         $this->client->submitForm('Update', [
             'message[objet]' => 'Something New',
             'message[contenu]' => 'Something New',
+            'message[user_id]' => 'Something New',
         ]);
 
         self::assertResponseRedirects('/message/');
@@ -92,6 +96,7 @@ class MessageControllerTest extends WebTestCase
 
         self::assertSame('Something New', $fixture[0]->getObjet());
         self::assertSame('Something New', $fixture[0]->getContenu());
+        self::assertSame('Something New', $fixture[0]->getUser_id());
     }
 
     public function testRemove(): void
@@ -103,6 +108,7 @@ class MessageControllerTest extends WebTestCase
         $fixture = new Message();
         $fixture->setObjet('My Title');
         $fixture->setContenu('My Title');
+        $fixture->setUser_id('My Title');
 
         $this->repository->save($fixture, true);
 
