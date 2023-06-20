@@ -16,6 +16,10 @@ class MessageControllerTest extends WebTestCase
     {
         $this->assertEquals(42, 42);
     }
+    public function testJD()
+    {
+        $this->assertEquals(42, 42);
+    }
     // protected function setUp(): void
     // {
     //     $this->client = static::createClient();
